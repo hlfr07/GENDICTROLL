@@ -1,4 +1,3 @@
-import random
 import string
 import itertools
 
@@ -63,8 +62,11 @@ def generar_contraseñas_con_patron(patron, caracteres_seleccionados):
 def guardar_contraseña_en_archivo(nombre_archivo, contraseñas):
     with open(f"{nombre_archivo}.txt", "w") as archivo:
         for contraseña in contraseñas:
-            archivo.write(contraseña + '\n')
+            archivo.write(contraseña + '\n')  # Escribir cada contraseña en el archivo
     print(f"Contraseñas guardadas en el archivo {nombre_archivo}.txt")
+
+    # Imprimir cuántas líneas (contraseñas) se generaron
+    print(f"Se generaron {len(contraseñas)} contraseñas en total.")
 
 def seleccionar_caracteres_predefinidos():
     # Permite seleccionar los tipos de caracteres que se utilizarán para la generación de contraseñas
@@ -77,13 +79,13 @@ def seleccionar_caracteres_predefinidos():
 
     caracteres_seleccionados = ""
     if '1' in seleccion:
-        caracteres_seleccionados += string.digits
+        caracteres_seleccionados += string.digits  # Añade números
     if '2' in seleccion:
-        caracteres_seleccionados += string.ascii_lowercase
+        caracteres_seleccionados += string.ascii_lowercase  # Añade minúsculas
     if '3' in seleccion:
-        caracteres_seleccionados += string.ascii_uppercase
+        caracteres_seleccionados += string.ascii_uppercase  # Añade mayúsculas
     if '4' in seleccion:
-        caracteres_seleccionados += string.punctuation
+        caracteres_seleccionados += string.punctuation  # Añade caracteres especiales
     
     if caracteres_seleccionados == "":
         print("No has seleccionado ningún tipo de caracteres. Inténtalo de nuevo.")
